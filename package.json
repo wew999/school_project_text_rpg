@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
-    "git": "^0.1.5"
+    "git": "^0.1.5",
+    "yarn": "^1.22.22"
   }
 }

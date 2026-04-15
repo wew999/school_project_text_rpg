@@ -137,7 +137,7 @@ const roomList = ref([{name: 'Город',
   {name: 'Телепорт', //25
     btn1: 'Построить комнату (500)', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: daddygun1, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Похоже, вы наткнулись на метро. Но куда же оно ведёт?'
+    msgtext: 'Похоже, вы наткнулись на метро. Но куда же оно ведёт? Тут нет ни рельсов, ни тоннеля'
   },
     ////
   {name: 'Сомелье', //26
@@ -221,7 +221,7 @@ const weaponary = ref([{nameW: 'Палка', atack: 5},
   {nameW: 'Клинок', atack: 30},
   {nameW: 'Молоток', atack: 50},
   {nameW: 'Меч', atack: 100}])
-let health = ref(1000)
+let health = ref(100)
 let weaponIndex = ref(0)
 const enemyList = ref([
   {nameM: "Потерянный", lvl: 5, healthM: 100},
@@ -241,8 +241,8 @@ const impArts = []
 
 let rli = ref(2)
 let rii = ref(2)
-let sanity = ref(900)
-let gold = ref(1000)
+let sanity = ref(100)
+let gold = ref(100)
 let message = ref('')
 let debug = false
 let btn1 = ref('Вверх')
@@ -260,7 +260,7 @@ let statsM = ref(false)
 let healthM = ref(enemyList.value[enemyIndex.value].healthM)
 let nameM = ref(enemyList.value[enemyIndex.value].nameM)
 let fightdisp = ref(false)
-let xp = ref(5000)
+let xp = ref(0)
 //let figlimigli = ref(`${rli}${rii}`)
 let greyPrank = false
 let insanePrank = false
