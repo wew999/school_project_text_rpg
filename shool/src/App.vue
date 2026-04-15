@@ -265,9 +265,9 @@ let xp = ref(0)
 let greyPrank = false
 let insanePrank = false
 const randonify = () => {
-  let chirme = Math.floor(Math.random() * (38 - 4 + 1)) + 4
+  let chirme = Math.floor(Math.random() * (37 - 4 + 1)) + 4
   while (usedList.value.includes(chirme)) {
-    chirme = Math.floor(Math.random() * (38 - 4 + 1)) + 4
+    chirme = Math.floor(Math.random() * (37 - 4 + 1)) + 4
   }
   usedList.value.push(chirme)
   return chirme
