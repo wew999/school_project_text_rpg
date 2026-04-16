@@ -221,7 +221,7 @@ const weaponary = ref([{nameW: 'Палка', atack: 5},
   {nameW: 'Клинок', atack: 30},
   {nameW: 'Молоток', atack: 50},
   {nameW: 'Меч', atack: 100}])
-let health = ref(10000)
+let health = ref(300)
 let weaponIndex = ref(0)
 const enemyList = ref([
   {nameM: "Потерянный", lvl: 5, healthM: 100},
@@ -241,7 +241,7 @@ const impArts = []
 
 let rli = ref(2)
 let rii = ref(2)
-let sanity = ref(10000)
+let sanity = ref(300)
 let gold = ref(100)
 let message = ref('')
 let debug = false
