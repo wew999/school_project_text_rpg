@@ -7,7 +7,7 @@ const usedIndList = ref([])
 const roomIndex = ref([1, 2, 3, 4, 5, 6])
 const roomLetter = ref(['A', 'B', 'C', 'D', 'E', 'F'])
 
-const roomList = ref([{name: 'Город',
+const roomList = ref([{name: 'Странствие',
   btn1: 'Вверх', btn2: 'Вниз', btn3: 'Налево', btn4: 'Направо',
   fun1: goUp, fun2: goDown, fun3: goLeft, fun4: goRight,
   msgtext: 'Вы решили идти. Куда дальше?'
@@ -55,9 +55,9 @@ const roomList = ref([{name: 'Город',
     msgtext: 'Вдруг из стены выходит серая фигура. Резко, у вас начинается головная боль. Что-то подзказывает вам, что избежать этого боя не получиться. Но в чём же подвох? Что не так с этим странным человеком? '
   },
   {name: 'Комната обмена', //9
-    btn1: 'Первая ()', btn2: 'Вторая ()', btn3: 'Третья ()', btn4: 'Четвёртая ()',
+    btn1: 'Первая', btn2: 'Вторая ', btn3: 'Третья ', btn4: 'Четвёртая ',
     fun1: exchange1, fun2: exchange2, fun3: exchange3, fun4: exchange4,
-    msgtext: 'Вы попадаете в ловушку. Вас окружили четыре двери. На каждой из них начертан свой символ. В каю из них вы войдёте?'
+    msgtext: 'Вы попадаете в ловушку. Вас окружили четыре двери. В каю из них вы войдёте?'
   },
   {name: 'Архив 1', //10
     btn1: 'Ячейка 1', btn2: 'Ячейка 2', btn3: 'Ячейка 3', btn4: 'Уйти',
@@ -74,10 +74,10 @@ const roomList = ref([{name: 'Город',
     fun1: fightRock, fun2: '', fun3: '', fun4: '',
     msgtext: 'Перед вами стоит человек. Это не зверь, не монстр, такая же потерянная душа, как и ты. Он явно потерял рассудок и настроен агрессивно, перекрывая дорогу к выходу. Вы вынуждены принять бой'
   },
-  {name: 'Темщик', //13
+  {name: 'Банкир', //13
     btn1: 'Сражаться', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: fightMoney, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Вы подходите'
+    msgtext: 'Вы подходите к огромным вратам, напоминающим вход в дворец. Только в убеждаете себя в том, что они могут быть выходом, как тут же из них вылетает человек, полностью покрытый мехами и золотыми украшениями. Кажется, он настроен агрессивно.'
   },
   {name: 'Допельгагнер', //14
     btn1: 'Сражаться', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
@@ -117,43 +117,43 @@ const roomList = ref([{name: 'Город',
   {name: 'Заражение', //21
     btn1: 'Уйти', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
     fun1: infection1, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Ой-ой, дротик делает бууууум'
+    msgtext: 'Вдруг, в вас прилетает дротик! Похоже комната - это ловушка. Вы чувствуете себя нехорошо...'
   },
   {name: 'Фонтан', //22
     btn1: 'Испить', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: cure, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Лечение уву'
+    msgtext: 'Из земли бьёт целебный фонтан. Он манит вас, но точно ли вы хотите испить его сейчас?'
   },
   {name: 'Стройка', //23
     btn1: 'Построить комнату (500)', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: construction, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Вы натыкаетесь на странный пульт'
+    msgtext: 'Вы натыкаетесь на странный пульт. Похоже, вы можете посторить какую угодно комнату на ыундаменте уже существующей.'
   },
   {name: 'Налог!', //24
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: skipl, fun2: '', fun3: '', fun4: '',
     msgtext: 'Заплатите налог! Вы теряете деньги'
   },
-  {name: 'Телепорт', //25
-    btn1: 'Построить комнату (500)', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
+  {name: 'Метро', //25
+    btn1: 'Сесть на поезд', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: daddygun1, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Похоже, вы наткнулись на метро. Но куда же оно ведёт? Тут нет ни рельсов, ни тоннеля'
+    msgtext: 'Похоже, вы наткнулись на метро. Но куда же оно ведёт? Тут нет ни рельсов, ни тоннеля. Поедете ли вы'
   },
     ////
   {name: 'Сомелье', //26
     btn1: 'Сражаться', btn2: 'Убежать', btn3: 'N/A', btn4: 'N/A',
     fun1: fightSomelie, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Телепорт!'
+    msgtext: 'Вы входите в огромный банкетный зал. Там сидит человек, жадно потребляющий пищу. Замечая вас, он бросает всё и начинает двигаться в вашу сторону'
   },
   {name: 'Медсестра', //27
     btn1: 'Сражаться', btn2: 'Убежать', btn3: 'N/A', btn4: 'N/A',
     fun1: fightMed, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Телепорт!'
+    msgtext: 'Вы входите в место, которое выглядит как заброшенный кабинет врача. Поняв, что тут ничего нет, вы уже собираетесь уходить, однако резко из под одной из кушеток вылезает женщина в красном платье, толстым слоем замотанная в бинты. Похоже, она настроена агрессивно.'
   },
   {name: 'Император', //28
     btn1: 'Построить комнату (500)', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: fightEmperor, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Телепорт!'
+    msgtext: 'Вы входите в величественный зал с колонами. Посреди зала стоит Император. Он безмолвен, но по позе ясно, что он хочет битвы.'
   },
   {name: 'Локатор', //29
     btn1: 'Включить радар', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
@@ -163,52 +163,52 @@ const roomList = ref([{name: 'Город',
   {name: 'Тренажерный зал', //30
     btn1: 'Позаниматься (10 зл => 1 xp)', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: exchangeXp, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'Здесь можно потренироваться. Это полезно, однако за абонемент придётся платить'
   },
   {name: 'ХАОС, ХАОС!', //31
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: goJevilTown, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'ХАОС, ХАОС! КТО ВРАЩАЕТ ЭТОТ МИР? ВСЕ КОМНАТЫ ПЕРЕМЕШАЛИСЬ!'
   },
   {name: 'Эхо-камера', //32
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: goEchoTown, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Эффекты дольше бубубубу бебебебе'
+    msgtext: 'Вы попадаете в очень странное место, где все звуки кажутся глубже и словно впиваются в глубины вашего сознания. Кажется, все ваши эффекты стали дольше. (Даже если у вас их не было)'
   },
   {name: 'Черепаха', //33
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: fightTurtle, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'На вас нападает странное существо с огромным панцирем. Хватит ли у вас сил пробить этот панцирь?'
   },
   {name: 'Зомби', //34
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: fightZombie, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'На вас выбегает безумный прокажённый человек. Несмотря на истощённый вид, он похоже резок как чёрт.'
   },
   {name: 'Пожарный', //35
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: fightFirefighter, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'На вас нападает мужчина в форме и маске пожарного. В его руке зажигательная смесь. Очевидно, добром это не кончиться.'
   },
   {name: 'Кнопка?', //36
     btn1: 'Нажать', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: destruction, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'В этой комнате просто есть странная кнопка. Нажать её?'
   },
   {name: 'Воровство', //37
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: theft, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'Посреди комнаты стоит странная коробка. Вы с недоверием приближаетесь к ней...'
   },
   {name: 'Ловушка', //38
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: zemlya, fun2: '', fun3: '', fun4: '',
-    msgtext: 'Здесь можно xp купить'
+    msgtext: 'Вдруг, в вас прилетает стрела! Похоже комната - это ловушка.В следующий раз будьте аккуратнее!'
   },
   {name: 'Выход', //39
     btn1: 'Выйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
     fun1: winwin, fun2: goTown, fun3: '', fun4: '',
-    msgtext: 'бебебе'
+    msgtext: 'Это - выход. Ваша конечная точка. Соберите 7 ключей и наконец сможете покинуть этот кошмар'
   },
   {name: 'Руины', //41
     btn1: 'Уйти', btn2: 'Уйти', btn3: 'N/A', btn4: 'N/A',
@@ -221,13 +221,13 @@ const weaponary = ref([{nameW: 'Палка', atack: 5},
   {nameW: 'Клинок', atack: 30},
   {nameW: 'Молоток', atack: 50},
   {nameW: 'Меч', atack: 100}])
-let health = ref(100)
+let health = ref(10000)
 let weaponIndex = ref(0)
 const enemyList = ref([
   {nameM: "Потерянный", lvl: 5, healthM: 100},
   {nameM: "Серый человек",  lvl: 5, healthM: 150}, //Ун
   {nameM: "Рыцарь",  lvl: 1, healthM: 250}, //Гн
-  {nameM: "Темщик", lvl: 5, healthM: 250}, //Ал
+  {nameM: "Банкир", lvl: 5, healthM: 250}, //Ал
   {nameM: "Реплика", lvl: weaponary.value[weaponIndex.value].atack, healthM: health.value}, // Зав
   {nameM: "Биомасса", lvl: 1, healthM: 20},
   {nameM: "Медсестра", lvl: 5, healthM: 250}, //Пх
@@ -241,7 +241,7 @@ const impArts = []
 
 let rli = ref(2)
 let rii = ref(2)
-let sanity = ref(100)
+let sanity = ref(10000)
 let gold = ref(100)
 let message = ref('')
 let debug = false
@@ -276,38 +276,37 @@ const utilityRooms = ref([
     {name: 'Архив 1.1',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback, fun2: '', fun3: '', fun4: '',
-      msgtext: 'ТЕСТ'
+      msgtext: 'Вы находите странную фотографию. На ней изображены вы и какая-то незнакомая вам женщина. Кто бы это мог быть?'
     },
     {name: 'Архив 1.2',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback, fun2: '', fun3: '', fun4: '',
-      msgtext: 'ТЕСТ'
+      msgtext: 'Вы находите скомканый кусок бумаги. На нём аккуратным подчерком выведены следующие слова: "БРОСЬ ЭТО ДЕЛО! Просто смирись и живи дальше. Этот демон не вернёт её тебе, как бы ты этого не хотел! Я смотрел на твои устройства и, как эксперт, могу сказать, что они - нерабочий мусор. Одумайся! Ты преследуешь свой хвост. Ты потеряешь так очень много времени. А если ты его догонишь, то ты вообще можешь исчезнуть. Прошу, хватит этим заниматься!"'
     },
     {name: 'Архив 1.3',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback, fun2: '', fun3: '', fun4: '',
-      msgtext: 'Побеждённый монстр кричит "BRUH". Вы побеждаете и получаете золото'
+      msgtext: 'Вы находите записку, на которой спешным корявым подчерком написаны следующие слова: "Я это ты. Я знаю что эту записку прочитаю именно я, поскольку в этом подземелье нет больше никого живого. Если ты это читаешь, то знай, что ты проходишь этот путь уже тысячный раз. Это петля, у которой нет выхода. Если ты хочешь выйти по настоящему, тебе нужно открыть VIP-комнату. Она - твоя последняя надежда. Я уже не успею, они почти сломали дверь."'
     },
     {name: 'Архив 2.1',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback2, fun2: '', fun3: '', fun4: '',
-      msgtext: 'Побеждённый монстр кричит "BRUH". Вы побеждаете и получаете золото'
+      msgtext: ' Из отчёта ОСП от [УДАЛЕНО]: "Сущность, получившая кодовое название EGAC#99-01, также известная как Демон хаоса, на данный момент является одной из мощнейших сущностей, когда либо созданный Матерью. Его основная способность заключается в абсолютно хаотичном, но при этом весьма сильном преображении реальности вокруг себя. Несмотря на фактическую способность управлять реальностью, существо, похоже, не обладает разумом или собственной волей. Хаотично воплощаясь в разных местах, оно несёт разрушения и сильный ущерб..."'
     },
     {name: 'Архив 2.2',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback2, fun2: '', fun3: '', fun4: '',
-      msgtext: 'Побеждённый монстр кричит "BRUH". Вы побеждаете и получаете золото'
+      msgtext: 'Отчёт ОСП об инциденте №6567: "Во время седьмого воплощения EGAC#99-01, оперативник [УДАЛЕНО] вступил в контакт с существом, в результате которого провалился внутрь его тела. Дальнейшая его судьба неизвестна. Руководство зоны [УДАЛЕНО] приняло решение о признании пострадавшего погибшим"'
     },
     {name: 'Архив 2.3',
       btn1: 'Обратно', btn2: 'N/A', btn3: 'N/A', btn4: 'N/A',
       fun1: plsback2, fun2: '', fun3: '', fun4: '',
-      msgtext: 'Побеждённый монстр кричит "BRUH". Вы побеждаете и получаете золото'
+      msgtext: 'Из записки руководству зоны [УДАЛЕНО] от [УДАЛЕНО]: "Как вы не понимаете? Он не погиб! Он всё ещё жив там, по ту сторону мира. Я знаю почему вы пытаетесь замять эту историю. Вы просто панически боитесь признать, что вы не можете достать его оттуда. Я прав?"'
     }],
 );
 const emoji = [
 '','','','','🏪','🩸', '💉', '🧠', '🕴', '🔁', '🔲', '🔳', '🧍‍♂️', '💸', '👥', '🤺', '🎦', '🎰', '💊', '🏧', '🥇', '☣', '⛲', '🛠', '💷', '🚇', '🧛‍♂️', '💝️', '🤴', '📻', '🏆', '😵', '🔊', '🐢', '🧟‍♂️', '👨‍🚒', '🔘', '🐱‍👤', '🏹', '🚪', '✖' //36/36
 ]
-console.log(emoji.length - 4)
 const xyzlift = ref([
   {fig: "A1", fun: randonify(), vall: ''}, {fig: "A2", fun: randonify(), vall: ''}, {fig: "A3", fun: randonify(), vall: ''}, {fig: "A4", fun: randonify(), vall: ''}, {fig: "A5", fun: randonify(), vall: ''}, {fig: "A6", fun: randonify(), vall: ''},
   {fig: "B1", fun: randonify(), vall: ''}, {fig: "B2", fun: randonify(), vall: ''}, {fig: "B3", fun: randonify(), vall: ''}, {fig: "B4", fun: randonify(), vall: ''}, {fig: "B5", fun: randonify(), vall: ''}, {fig: "B6", fun: randonify(), vall: ''},
@@ -317,7 +316,7 @@ const xyzlift = ref([
   {fig: "F1", fun: randonify(), vall: ''}, {fig: "F2", fun: randonify(), vall: ''}, {fig: "F3", fun: randonify(), vall: ''}, {fig: "F4", fun: randonify(), vall: ''}, {fig: "F5", fun: randonify(), vall: ''}, {fig: "F6", fun: randonify(), vall: ''},
 ])
 for (let rry of xyzlift.value) {
-  console.log(rry)
+  console.log(rry.fun)
 }
 /*const displayT = [
   {id: "A1", vall: ''}, {id: "B1", vall: ''}, {id: "C1", vall: ''}, {id: "D1", vall: ''}, {id: "E1", vall: ''}, {id: "F1", vall: ''},
@@ -418,6 +417,16 @@ function radar() {
   dangerArray.push(danger12)
   let danger13 = getIDByFun(31)
   dangerArray.push(danger13)
+  let danger14 = getIDByFun(33)
+  dangerArray.push(danger14)
+  let danger15 = getIDByFun(34)
+  dangerArray.push(danger15)
+  let danger16 = getIDByFun(35)
+  dangerArray.push(danger16)
+  let danger17 = getIDByFun(37)
+  dangerArray.push(danger17)
+  let danger18 = getIDByFun(38)
+  dangerArray.push(danger18)
   console.log(dangerArray)
   for (let dangerId of dangerArray) {
     if(dangerId >= 0) {
@@ -440,11 +449,22 @@ const sanityWatcher = watch(roomLIndex, (newX) => {
 })
 
 function winwin() {
-  if (impArts.length >= 7) {
+  if (impArts.length >= 7 && !(impArts.includes('Потёртая медаль'))) {
     console.log(impArts)
-    message.value = "Урааа, победа"
+    message.value = "Вы открываете дверь и видите... бесконечную опустошающую бездну. Вы падаете на колени и вам больно от осознани того, что всё это было зря. Вы вспоминаете все те десятки тысяч раз, когда вы пытались выйти, однако находили лишь разочарование. Это место просто так не отпускает... Чтож, похоже придётся сделать ещё один круг..."
+    btn1 = "Открыть глаза"
+    change1.value = res
+    change2.value = ''
+    change3.value = ''
+    change4.value = ''
+  } else if (impArts.length >= 7 && impArts.includes('Потёртая медаль')) {
+    message.value = "Вы открываете дверь и видите... пшеничное поле. Почему оно здесь? Зачем оно здесь? Это реальный мир? Неужели удалось выбраться? Все эти вопросы гаснут, по итогу исчезая в бесконечном чувстве умиротворения. Даже если у вас не получилось выйти, это уже не важно. Наконец-то вы обрели место, где можете отдохнуть от бесконечного хода по кругу... Вы ложитель в пшеничное поле и закрываете глаза"
+    change1.value = ''
+    change2.value = ''
+    change3.value = ''
+    change4.value = ''
   } else {
-    message.value = "Недопустимо"
+    message.value = "Вы собрали не все ключи"
   }
 }
 
@@ -552,13 +572,13 @@ function goJevilTown() {
     for (let i = 0; i < 36; i++) {
       xyzlift.value[i].vall = ''
     }
-    if (field.fig !== "C3") {
+    if (field.fig === "C3") {
       field.fun = 39
     }
   }
   usedList.value.length = 0
   for (let field of xyzlift.value) {
-    if (field.fig !== "C2") {
+    if (field.fig !== "C3") {
       field.fun = randonify()
     }
   }
@@ -572,11 +592,13 @@ function res() {
   xp.value = 0;
   health.value = 100;
   sanity.value = 100;
+  depcount = 0
   gold.value = 50;
   rii.value = 2
   rli.value = 2
   weaponIndex.value = 0;
   inventory.value = ["stick"];
+  impArts.length = 0
   for (let i = 0; i < 36; i++) {
     xyzlift.value[i].vall = ''
   }
@@ -634,7 +656,9 @@ function attack() {
     } else if (enemyIndex.value === 4) {
       defeatMonster();
       message.value = "Существо обратилось в бесформенную массу глины. Из этой массы в лепите ключ."
-      impArts.push("Глиняный ключ")
+      if (!(impArts.includes("Глиняный ключ"))) {
+        impArts.push("Глиняный ключ")
+      }
     }else if (enemyIndex === 9) {
       gold.value += 1000
       roomList.value[33].fun1 = ''
@@ -683,7 +707,9 @@ function attackSan() {
     } else {
       defeatMonster();
       message.value = "Уняв головную боль, вы чувствуете в вашей руке ключ. Как он там оказался? Резко ваш разум становится яснее."
+      if (!(impArts.includes("Изогнутый ключ"))) {
       impArts.push("Изогнутый ключ")
+      }
     }
   }
   if (Math.random() <= .1 && inventory.value.length !== 1) {
@@ -725,7 +751,9 @@ function attackMon() {
       defeatMonster();
       message.value = "Вы собрали всё золото, что осталось от банкира. В нём вы нашли золотой ключ, инкрустированный брилиантами"
       gold.value += 5000
-      impArts.push("Инкрустированный ключ")
+      if (!(impArts.includes("Инкрустированный ключ"))) {
+        impArts.push("Инкрустированный ключ")
+      }
     }
   }
   if (Math.random() <= .1 && inventory.value.length !== 1) {
@@ -752,7 +780,9 @@ function attackChrev() {
     } else if (enemyIndex.value === 8) {
       defeatMonster();
       message.value = "После победы над врагом, вы снимаете с его шеи массивный слегка погнутый красный ключ."
+      if (!(impArts.includes("Красный ключ"))) {
       impArts.push("Красный ключ")
+      }
     } else {
       defeatMonster();
     }
@@ -782,7 +812,9 @@ function attackKnight() {
     } else if (enemyIndex.value === 2) {
       defeatMonster();
       message.value = "Рыцарь повержен. Из доспехов на его груди вывалилось нечто отдалённо напоминающее ключ. При детальном рассмотрении вы понимаете, что это приспособление необходимо скорее для уничтожения, чем для вскрытия замков. Тем не менее, вы оставляете это себе."
+      if (!(impArts.includes("Отмычка-уничтожитель"))) {
       impArts.push("Отмычка-уничтожитель")
+      }
     } else {
       defeatMonster();
     }
@@ -813,7 +845,8 @@ function attackMed() {
       defeatMonster();
       xp.value += 50
       message.value = "Император, преклоняя перед вами колено протягивает вам руки. В них что-то бсетит и вы решаете присвоить это себе. Вам кажется, что вас благословили, пускай вы и не хотели этого благословения."
-      impArts.push("Хрустальный ключ")
+      if (!(impArts.includes("Хрустальный ключ"))) {
+      impArts.push("Хрустальный ключ")}
     }
   }
   if (Math.random() <= .1 && inventory.value.length !== 1) {
@@ -843,7 +876,8 @@ function attackMedTrue() {
     } else {
       defeatMonster();
       message.value = "Сражённая медсестра протягивает вам коробку в форме сердца. Внутри лежит красный ключ в какой-то липкой бурой субстанции."
-      impArts.push("Липкий ключ")
+      if (!(impArts.includes("Хрустальный ключ"))) {
+      impArts.push("Липкий ключ")}
     }
   }
   if (Math.random() <= .1 && inventory.value.length !== 1) {
@@ -985,6 +1019,7 @@ let balsalm = ref('')
 let chet1
 let nechet1
 let depcount = 0
+console.log(depcount)
 function chet() {
   chet1 = true
   stavka()
@@ -994,7 +1029,7 @@ function nechet() {
   stavka()
 }
 function bet() {
-  if (depcount !== 5) {
+  if (depcount === 5) {
   message.value = 'Извините, вы не можете больше ставить'
 } else {
     change1.value = chet
@@ -1443,7 +1478,7 @@ function daddygun() {
   rli.value = roomLetter.value.indexOf(pivo[0])
   rii.value = roomIndex.value.indexOf(Number(pivo[1]))
   update(roomList.value[roomLIndex.value]);
-  goTown()
+  //goTown()
 }
 
 function vip() {
@@ -1452,7 +1487,8 @@ function vip() {
     health.value += 500
     sanity.value += 500
     gold.value += 1500
-    impArts.push('Потёртая медаль')
+    if (!(impArts.includes('Потёртая медаль'))) {
+    impArts.push('Потёртая медаль')}
   } else {
     message.value = '"У вас недостаточно опыта"'
   }
@@ -1473,7 +1509,7 @@ function infection() {
         jk0()
         countinf = 0
       } else if (countinf === 25) {
-        health.value -= 100
+        health.value -= 1000
         countinf = 0
       }
       countinf++
@@ -1539,7 +1575,10 @@ function credit() {
       update(roomList.value[19])
       meh = false
       message.value = "Вдруг вы чувствуете, как внутри что-то очень сильно болит. Похоже, что-то не так с вашими внутренними органами. В любом случае, сейчас у вас нет озсожности обратиться к врачу, так что вы продолжаете путь. Вы знали на что шли, когда брали тот кредит..."
-      health.value -= 300
+      health.value -= 3000
+      if (health.value <= 0) {
+        lose()
+      }
       countc = 0
       jk0()
     }
@@ -1553,6 +1592,8 @@ function closecred() {
    meh = false
    gold.value -= 3500
    message.value = '"Отлично. Займ закрыт. Приятно иметь с тобой дело."'
+   roomList.value[19].btn1 = "Взять заём"
+   roomList.value[19].fun1 = credit
  } else {
    message.value = '"Ты меня что, за дурака держишь? Этого недостаточно. Тебе нужно вернуть 2500!"'
  }
@@ -1681,55 +1722,55 @@ let change4 = ref(goRight)
       <h1>Пронстранство No. 7</h1>
      <!-- <img v-bind:src="coolimage"> -->
 
-      <div class="mstats" v-if="fightdisp">
-        <p><span>{{ nameM }}</span> <strong>атакует!</strong></p>
-        <p><strong>Здоровье противника:</strong> <span id="healthText">{{ healthM }}</span></p>
-      </div>
-
-      <div id="meh" v-if="meh">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+      <div class="effect" v-if="meh"> <!--  -->
+        <img src="https://avatars.mds.yandex.net/i?id=3ffc9d79d496ba49359500ff6d869a38_l-9098231-images-thumbs&n=13">
         <p>Часики тикают</p>
         <p>Тебе не удасться избежать уплаты. Ходов осталось: {{35 - countc}}</p>
       </div>
       <div id="inf" v-if="meif">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://i.pinimg.com/736x/69/82/83/698283241a50c84bcbf423f7102a5b93.jpg">
         <p>Инфекция</p>
         <p>Лучше что-нибудь сделать с этой инфекцией. Ходов до симптомов: {{25 - countinf}}</p>
       </div>
       <div id="jevPill" v-if="revolve">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://images.steamusercontent.com/ugc/811121990145819023/3B4FC3EC0A6DD1A6C94FA7585A9E54CEAC925274/?imw=512&amp;&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=false">
         <p>МИР ВРАЩАЕТСЯ!!!</p>
         <p>ХАОС, ХАОС! Ходов осталось: {{'♾/11'}}</p>
       </div>
       <div id="seePill" v-if="seer">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://avatars.mds.yandex.net/i?id=9ba2721d117b72bf68004ce80693b1474958ee58-12471321-images-thumbs&n=13">
         <p>Ясновидение</p>
         <p>Видите ли вы то, что вижу я? Ходов осталось: {{10 - pillcount}}</p>
       </div>
       <div id="illPill" v-if="illp">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://avatars.mds.yandex.net/i?id=0a10d6e00ef03aa6fb5f32d32d2bd41a9835b015-9181183-images-thumbs&n=13">
         <p>Гниение</p>
         <p>Боль разложения содрогает тело. Ходов осталось: {{10 - pillcount}}</p>
       </div>
       <div id="blooPill" v-if="bloo">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://avatars.mds.yandex.net/i?id=f7a68da3a0661cc95e661f6ba61a98e3_l-4576871-images-thumbs&n=13">
         <p>Цветение</p>
         <p>Тело и разум преображает весна. Ходов осталось: {{10 - pillcount}}</p>
       </div>
       <div id="weakPill" v-if="weak">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://avatars.mds.yandex.net/i?id=2085dccb4b0f938925631961c0851d132bb93a1e-12528722-images-thumbs&n=13">
         <p>Слабость</p>
         <p>Кажется, ваша сила куда-то уходит. Ходов осталось: {{15 - pillcount}}</p>
       </div>
       <div id="strenPill" v-if="stren">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://i.pinimg.com/736x/ad/c8/2e/adc82efe01a03b112c13add483cf784b.jpg">
         <p>Доппинг</p>
         <p>Кажется, сила прибывает!. Ходов осталось: {{15 - pillcount}}</p>
       </div>
       <div id="pain" v-if="firebool">
-        <img src="https://i.pinimg.com/originals/b5/5b/3b/b55b3ba1e6d4314daf9ade1ee38d914d.gif">
+        <img src="https://avatars.mds.yandex.net/get-mpic/5218923/2a00000191dc984db8ac9f8ecd6095821434/9hq">
         <p>Горение</p>
         <p>Это будет больно. Ходов осталось: {{5 - firecount}}</p>
+      </div>
+
+      <div class="mstats" v-if="fightdisp">
+        <p><span>{{ nameM }}</span> <strong>атакует!</strong></p>
+        <p><strong>Здоровье противника:</strong> <span id="healthText">{{ healthM }}</span></p>
       </div>
 
       <div class="controls">
@@ -1748,24 +1789,24 @@ let change4 = ref(goRight)
         <p><strong>Здоровье:</strong> <span id="healthText">{{ health }}</span></p>
         <p><strong>Золото:</strong> <span id="goldText">{{ gold }}</span></p>
         <p><strong>Индекс комнаты:</strong> <span id="roomIndexText">{{ roomIndex[rii] }}{{ roomLetter[rli] }}</span></p>
+        <p><strong>Комната:</strong> <span id="roomIndexText">{{ roomList[roomLIndex].name }}</span></p>
         <p><strong>Опыт:</strong> <span>{{ xp }}</span></p>
-        <p><strong>Комнат пройдено:</strong> <span>{{usedList.length}}/36</span></p>
-        <p><strong>Инвентарь:</strong> <span>{{inventory}}{{impArts}}</span></p>
+        <p><strong>Инвентарь:</strong> <span>Оружие: {{inventory}}; Ключи: {{impArts}}</span></p>
       </div>
 
       <div v-if="rori">
         <input v-model="balsalm" max="3000">
       </div>
 
-      <input v-if="pickup" type="text" v-model="hayloft">
-      <button v-if="pickup" v-on:click="daddygun">Жестка</button>
+      <legend for="popka" v-if="pickup">Индекс комнаты<input v-if="pickup" type="text" v-model="hayloft" id="popka" value="Индекс комнаты"></legend>
+      <button v-if="pickup" v-on:click="daddygun">Сесть на поезд!</button>
 
-      <input v-if="oksi" type="text" v-model="construc">
-      <input v-if="oksi" type="text" v-model="construc2">
-      <button v-if="oksi" v-on:click="construction1">Жестка</button>
+      <legend for="om" v-if="oksi">Название комнаты:<input v-if="oksi" type="text" v-model="construc" id="om"></legend>
+      <legend for="mo" v-if="oksi">Индекс комнаты:<input v-if="oksi" type="text" v-model="construc2" id="mo"></legend>
+      <button v-if="oksi" v-on:click="construction1">Создать</button>
 
-      <input v-if="miron" type="text" v-model="destruc">
-      <button v-if="miron" v-on:click="destruction1">Жестка</button>
+      <legend for="omo" v-if="miron">Индекс комнаты:<input v-if="miron" type="text" v-model="destruc" id="omo"></legend>
+      <button v-if="miron" v-on:click="destruction1">Нажать</button>
 
       <table align="center">
         <thead>
